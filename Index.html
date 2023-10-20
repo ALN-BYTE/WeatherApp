@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title> <!--Will appear on top of tab-->
+    <link rel="icon" href="images/clear.png" type="image/png"> <!--the Favicon (tab logo) set to clear.png-->
+    <link rel="stylesheet" href="Style.css"> <!--Links Style Sheet Styles.css-->
+</head>
+<body>
+    <div class="card"> <!--This div contains the whole card of the app-->
+        <div class="search">
+            <!--type="text" tells the browser to render a textbox.
+                placeholder gives a hint to the user about what's expected in the textbox.
+                spellcheck="false" disables the browser's spell-check feature for this particular input.-->
+            <input type="text" placeholder="Enter City Name" spellcheck="false"> 
+            <button><img src="images/search.png" alt="magnifying glass next to search bar"></button>
+        </div>
+        <div class="weather">
+            <img src="images/clouds.png" alt="Weather Images">
+            <h1 class="temp">58°</h1>
+        </div>
+    </div>
+    
+</body>
+</html>
