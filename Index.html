@@ -38,18 +38,25 @@
     </div>
 
     <script>
+        //Set api key to variable apiKey
+        const apiKey = "4b18c289cc255a9d2ab6278d28109f47";
 
-        const apiKey = "4b18c289cc255a9d2ab6278d28109f47"; //Set api key to variable apiKey
-        const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=omaha"; //set api url ( without api key at end of url ) to variable apiURL apiurl
+        //set api url ( without api key at end of url ) to variable apiURL apiurl
+        const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=omaha";
 
-        async function checkWeather() {
+        async function checkWeather() { // Creates an asynchronous function to check weather
+
+            //fetches the weather data from apiUrl + `&appid=${apiKey} and stores the weather in the respnse variable
             const response = await fetch(apiURL + `&appid=${apiKey}`);
+
+            //Converts the weather data stored in the respnse variable to json format in the data variable
             var data = await response.json();
 
+            //prints the weather data to the console
             console.log(data);
 
             document.querySelector(".city").innerHTML = data.name;
-            document.querySelector(".temp").innerHTML = data.main.temp;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "c°";
             document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
             document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
 
