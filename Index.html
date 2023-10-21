@@ -37,6 +37,25 @@
         </div>
     </div>
 
+    <script>
+
+        const apiKey = "4b18c289cc255a9d2ab6278d28109f47"; //Set api key to variable apiKey
+        const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=omaha"; //set api url ( without api key at end of url ) to variable apiURL apiurl
+
+        async function checkWeather() {
+            const response = await fetch(apiURL + `&appid=${apiKey}`);
+            var data = await response.json();
+
+            console.log(data);
+
+        }
+
+        checkWeather();
+
+
+
+    </script>
+
 </body>
 
 </html>
