@@ -44,12 +44,14 @@
         //set api url ( without api key at end of url ) to variable apiURL apiurl
         const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-        //review these constants
+        //searchBox is assigned the input entered in the textbox  in the search class
         const searchBox = document.querySelector(".search input");
+        //SearchBtn variable is assigned the button element in the search class
         const searchBtn = document.querySelector(".search button");
+        //weatherIcon variable is assigned to weath icon class
         const weatherIcon = document.querySelector(".weather-icon");
 
-        async function checkWeather(city) { // Creates an asynchronous function to check weather
+        async function checkWeather(city) { // Creates an asynchronous function to check weather with city as a parameter
 
             //fetches the weather data from apiUrl + `&appid=${apiKey} and stores the weather in the respnse variable
             const response = await fetch(apiURL + city + `&appid=${apiKey}`);
@@ -69,10 +71,22 @@
             //continue this 
             if (data.weather[0].main == "Clouds") {
                 weatherIcon.src = "images/clouds.png";
+            } else if (data.weather[0].main == "Clear") {
+                weatherIcon.src = "images/clear.png";
+            } else if (data.weather[0].main == "Mist") {
+                weatherIcon.src = "images/mist.png";
+            } else if (data.weather[0].main == "Rain") {
+                weatherIcon.src = "images/rain.png";
+            } else if (data.weather[0].main == "Snow") {
+                weatherIcon.src = "images/snow.png";
+            } else {
+                // Handle any other conditions you might not have images for
+                // For example, you could set a default image or log a warning
+                console.warn(`No image found for weather condition: ${data.weather[0].main}`);
             }
 
         }
-        //review this function
+
         searchBtn.addEventListener("click", () => {
             checkWeather(searchBox.value);
         })
