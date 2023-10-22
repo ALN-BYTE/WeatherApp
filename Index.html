@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,20 @@
     <link rel="icon" href="images/clear.png" type="image/png"> <!--the Favicon (tab logo) set to clear.png-->
     <link rel="stylesheet" href="Style.css"> <!--Links Style Sheet Styles.css-->
 </head>
+
 <body>
     <div class="card"> <!--This div contains the whole card of the app-->
         <div class="search">
             <!--type="text" tells the browser to render a textbox.
                 placeholder gives a hint to the user about what's expected in the textbox.
                 spellcheck="false" disables the browser's spell-check feature for this particular input.-->
-            <input type="text" placeholder="Enter City Name" spellcheck="false"> 
+            <input type="text" placeholder="Enter City Name" spellcheck="false">
             <button><img src="images/search.png" alt="magnifying glass next to search bar"></button>
         </div>
         <div class="weather">
-            <img src="images/clouds.png" class = "weather-icon">
+            <img src="images/clouds.png" class="weather-icon">
             <h1 class="temp">58°</h1>
+<<<<<<< HEAD
             <h2 class="city">New York</h2>
             <div class="details">
                 <div class="col">
@@ -35,10 +38,69 @@
                         <p>Wind Speed</p>
                     </div>
                    
+=======
+            <h1 class="city">City</h1>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="humidity indicator">
+                    <p class="humidity"> 0 </p>
+                    <p>Humidity</p>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" alt="Wind Speed indicator">
+                    <p class="wind"> 0 </p>
+                    <p>Wind Speed</p>
+>>>>>>> 164342503ef0e1a6a862e0de92f46f8d4c985024
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <script>
+        //Set api key to variable apiKey
+        const apiKey = "4b18c289cc255a9d2ab6278d28109f47";
+
+        //set api url ( without api key at end of url ) to variable apiURL apiurl
+        const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        //review these constants
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".weather-icon");
+
+        async function checkWeather(city) { // Creates an asynchronous function to check weather
+
+            //fetches the weather data from apiUrl + `&appid=${apiKey} and stores the weather in the respnse variable
+            const response = await fetch(apiURL + city + `&appid=${apiKey}`);
+
+            //Converts the weather data stored in the respnse variable to json format in the data variable
+            var data = await response.json();
+
+            //prints the weather data to the console
+            console.log(data);
+
+            //Goes throught the DOM elements with class names and changes the data in them with the new data from OpenWeatherMap API
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "c°";
+            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+
+            //continue this 
+            if (data.weather[0].main == "Clouds") {
+                weatherIcon.src = "images/clouds.png";
+            }
+
+        }
+        //review this function
+        searchBtn.addEventListener("click", () => {
+            checkWeather(searchBox.value);
+        })
+
+
+
+
+    </script>
+
 </body>
+
 </html>
