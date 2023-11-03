@@ -72,6 +72,21 @@ body {
     font-size: 80px;
     font-weight: 500;
 }
+<<<<<<< HEAD
+.weather h2 {
+   font-size: 45px; 
+    font-weight: 400;
+    margin-top: -10px;
+}
+.details{
+    display: flex; 
+    align-items: center;  
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px; 
+    
+      
+=======
 
 .weather h2 {
     font-size: 45px;
@@ -88,6 +103,7 @@ body {
     margin-top: 50px;
 
 
+>>>>>>> 164342503ef0e1a6a862e0de92f46f8d4c985024
 }
 
 .col {
@@ -99,4 +115,8 @@ body {
 .col img {
     width: 40px;
     margin-right: 10px;
+}
+.humidity, .wind{
+    font-size: 28px;
+    margin-top: -6px;
 }
